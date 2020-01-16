@@ -1,0 +1,404 @@
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn {
+    display: inline-block;
+    background-color: transparent;
+    font-weight: $font-weight-normal;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    border-radius: $border-radius;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: 0 2px;
+
+    &:hover,
+    &.hover {
+        border: 1px solid transparent;
+        text-decoration: none;
+    }
+
+    &:focus,
+    &.focus {
+        border: 1px solid transparent;
+        box-shadow: 0px 0px 4px;
+    }
+
+    &.disabled,
+    &:disabled {
+      pointer-events: none;
+      cursor: default;
+      opacity: .40;
+    }
+
+    &:last-child{
+      margin-right: 0px;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn.btn-#{$color} {
+      @include button-variant($value, $value);
+    }
+}
+
+@each $color, $value in $colors {
+    .btn.btn-#{$color} {
+      @include button-variant($value, $value);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn.btn-outline-#{$color} {
+        @include button-outline-variant($value, $white);
+    }
+}
+
+@each $color, $value in $colors {
+    .btn.btn-outline-#{$color} {
+        @include button-outline-variant($value, $white);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn.btn-round-#{$color} {
+        @include button-round-variant($value, $white);
+    }
+}
+
+@each $color, $value in $colors {
+    .btn.btn-round-#{$color} {
+        @include button-round-variant($value, $white);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn.btn-flag-#{$color} {
+        @include button-flag-variant($value, $white);
+    }
+}
+
+@each $color, $value in $colors {
+    .btn.btn-flag-#{$color} {
+        @include button-flag-variant($value, $white);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn.btn-especial-#{$color},.especial-#{$color}:focus {
+        @include button-especial-variant($value, $white);
+    }
+}
+
+@each $color, $value in $colors {
+    .btn.btn-especial-#{$color},.especial-#{$color}:focus {
+        @include button-especial-variant($value, $white);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .transparent.trans-#{$color} {
+        @include button-transparent-variant($value, $value);
+    }
+}
+
+@each $color, $value in $colors {
+    .transparent.trans-#{$color} {
+      @include button-transparent-variant($value, $value);
+    }
+}
+
+.btn.default,
+.btn.outline-default,
+.btn.round-default,
+.btn.flag-default,
+.btn.especial-default,
+.btn.especial-light,
+.btn.light,
+.btn.outline-light,
+.btn.round-light,
+.btn.flag-light{
+    color: $font-color !important;
+    border-color: $border-color !important;
+}
+
+.btn.light{
+    color: $font-color !important;
+}
+
+.btn-link {
+    font-weight: normal;
+    color: $link-color;
+    background-color: transparent;
+
+    &:hover,
+    &.hover {
+        color: $link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    &:focus,
+    &.focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    &:disabled,
+    &.disabled {
+      color: $font-color-disabled;
+    }
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+
+.btn-block + .btn-block {
+    margin-top: .5rem;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.btn-block {
+      width: 100%;
+    }
+}
+
+.btn > input[type="radio"]{
+    display: none;
+}
+
+.btn-lg{
+    height: 3rem;
+    padding: .5rem 1rem;
+    font-size: ($font-size-base * 1.25);
+    line-height: 1.5;
+    border-radius: $border-radius-lg;
+}
+
+.btn-sm{
+    height: 1.6rem;
+    padding: .25rem .5rem;
+    font-size: ($font-size-base * .775);
+    line-height: 1.2;
+    border-radius: $border-radius-sm;
+}
+
+.btn-group,
+.btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+    > .btn {
+        position: relative;
+        flex: 0 1 auto;
+        margin: 0;
+        &:hover,
+        &.hover {
+            border: 1px solid transparent;
+            text-decoration: none;
+            z-index: 2;
+        }
+        &:focus,
+        &:active,
+        &.active {
+            z-index: 2;
+        }
+    }
+
+    .btn + .btn,
+    .btn + .btn-group,
+    .btn-group + .btn,
+    .btn-group + .btn-group {
+        margin-left: -3px;
+    }
+}
+
+.btn-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .input-group {
+      width: auto;
+    }
+}
+
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0;
+}
+
+.btn-group > .btn:first-child {
+    margin-left: 0;
+
+    &:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group > .btn-group {
+    float: left;
+}
+
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+    border-radius: 0;
+}
+
+.btn-group > .btn-group:first-child:not(:last-child) {
+    > .btn:last-child,
+    > .dropdown-toggle {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group-sm > .btn {
+    height: 1.6rem;
+    padding: .25rem .5rem;
+    font-size: ($font-size-base * .775);
+    line-height: 1.5;
+    border-radius: $border-radius-sm;
+}
+.btn-group-lg > .btn {
+    height: 3rem;
+    padding: .5rem 1rem;
+    font-size: ($font-size-base * 1.25);
+    line-height: 1.5;
+    border-radius: $border-radius-lg;
+}
+
+.btn + .dropdown-toggle-split {
+    padding-right: .75rem * .75;
+    padding-left: .75rem * .75;
+
+    &::after {
+      margin-left: 0;
+    }
+}
+
+.btn-sm + .dropdown-toggle-split {
+    padding-right: .5rem * .75;
+    padding-left: .5rem * .75;
+}
+
+.btn-lg + .dropdown-toggle-split {
+    padding-right: 1rem * .75;
+    padding-left: 1rem * .75;
+}
+
+.btn-group.show .dropdown-toggle {
+    box-shadow: inset 0 3px 5px rgba($black,.125);
+
+
+    &.btn-link {
+        box-shadow: none;
+    }
+}
+
+.btn-group-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    .btn,
+    .btn-group {
+        width: 100%;
+    }
+
+    > .btn + .btn,
+    > .btn + .btn-group,
+    > .btn-group + .btn,
+    > .btn-group + .btn-group {
+        margin-top: -3px;
+        margin-left: 0;
+    }
+
+    > .btn {
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+
+        &:first-child:not(:last-child) {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child:not(:first-child) {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    > .btn-group:not(:first-child):not(:last-child) > .btn {
+        border-radius: 0;
+    }
+
+    > .btn-group:first-child:not(:last-child) {
+        > .btn:last-child,
+        > .dropdown-toggle {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    > .btn-group:last-child:not(:first-child) > .btn:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
+[data-toggle="buttons"] {
+    > .btn,
+    > .btn-group > .btn {
+        input[type="radio"],
+        input[type="checkbox"] {
+            position: absolute;
+            clip: rect(0,0,0,0);
+            pointer-events: none;
+        }
+    }
+}
+
+.btn > .btn-icon,{
+    margin-left: 6px;
+    padding: 6px 0px 6px 12px;
+    border-left: 1px solid rgba($black,.3);
+}
+
+
+.icon-left{
+    margin-right: 6px;
+}
+
+.icon-right{
+    margin-left: 6px;
+}
+
+.btn > i.fa, .btn > i.fal{
+    margin-right: 6px;
+}
+
+.btn .caret { margin-left: 0; }

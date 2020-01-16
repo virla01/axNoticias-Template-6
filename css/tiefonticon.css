@@ -1,0 +1,155 @@
+@font-face {
+    font-family: 'tiefonticon';
+    src: url('../fonts/tiefonticon.eot?961m6g');
+    src: url('../fonts/tiefonticon.eot?961m6g#iefix') format('embedded-opentype'), url('../fonts/tiefonticon.ttf?961m6g') format('truetype'), url('../fonts/tiefonticon.woff?961m6g') format('woff'), url('../fonts/tiefonticon.svg?961m6g#tiefonticon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="ax .icon-"],
+[class*="ax .icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'tiefonticon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-basecloud-2:before {
+    content: "\f105";
+}
+
+.icon-cloud:before {
+    content: "\e904";
+}
+
+.icon-cloud-solid:before {
+    content: "\e905";
+}
+
+.icon-wind:before {
+    content: "\e902";
+}
+
+.icon-thermometer-half:before {
+    content: "\e901";
+}
+
+.icon-check:before {
+    content: "\e116";
+}
+
+.icon-cross:before {
+    content: "\e117";
+}
+
+.icon-dots-three-horizontal:before {
+    content: "\e903";
+}
+
+.icon-fire:before {
+    content: "\e900";
+}
+
+.icon-map:before {
+    content: "\e6ab";
+}
+
+.icon-goto:before {
+    content: "\e64a";
+}
+
+.icon-star:before {
+    content: "\e66b";
+}
+
+.icon-plaine:before {
+    content: "\e671";
+}
+
+.icon-house:before {
+    content: "\e67d";
+}
+
+.icon-users:before {
+    content: "\e69b";
+}
+
+.icon-user:before {
+    content: "\e69c";
+}
+
+.icon-typing:before {
+    content: "\e69e";
+}
+
+.icon-settings:before {
+    content: "\e6a3";
+}
+
+.icon-ringer:before {
+    content: "\e6a7";
+}
+
+.icon-messageright:before {
+    content: "\e6b3";
+}
+
+.icon-list:before {
+    content: "\e6b8";
+}
+
+.icon-inbox:before {
+    content: "\e6bb";
+}
+
+.icon-edit:before {
+    content: "\e6bd";
+}
+
+.icon-raindrop:before {
+    content: "\f078";
+}
+
+.icon-text:before {
+    content: "\e685";
+}
+
+.icon-audio:before {
+    content: "\e6a2";
+}
+
+.icon-picture:before {
+    content: "\e6ac";
+}
+
+.icon-video:before {
+    content: "\e6b6";
+}
+
+.icon-windysnow:before {
+    content: "\f103";
+}
+
+.icon-mist:before {
+    content: "\f108";
+}
+
+.icon-moon:before {
+    content: "\f10d";
+}
+
+.icon-sun:before {
+    content: "\f113";
+}
+
+.icon-thunder:before {
+    content: "\f114";
+}

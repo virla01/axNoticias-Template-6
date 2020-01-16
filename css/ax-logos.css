@@ -1,0 +1,353 @@
+@font-face {
+    font-family: 'ax-logos';
+    src: url('../fonts/ax-logos.eot?v00h05');
+    src: url('../fonts/ax-logos.eot?v00h05#iefix') format('embedded-opentype'), url('../fonts/ax-logos.ttf?v00h05') format('truetype'), url('../fonts/ax-logos.woff?v00h05') format('woff'), url('../fonts/ax-logos.svg?v00h05#ax-logos') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i.axl {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'ax-logos';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.axl-px:before {
+    content: "\e900";
+}
+
+.axl-accessible-icon:before {
+    content: "\e901";
+}
+
+.axl-adobe:before {
+    content: "\e902";
+}
+
+.axl-amazon:before {
+    content: "\e903";
+}
+
+.axl-amazon-pay:before {
+    content: "\e904";
+}
+
+.axl-android:before {
+    content: "\e905";
+}
+
+.axl-angellist:before {
+    content: "\e906";
+}
+
+.axl-angular:before {
+    content: "\e907";
+}
+
+.axl-apple:before {
+    content: "\e908";
+}
+
+.axl-app-store:before {
+    content: "\e909";
+}
+
+.axl-aspectox:before {
+    content: "\e90a";
+}
+
+.axl-bitcoin:before {
+    content: "\e90b";
+}
+
+.axl-bluetooth:before {
+    content: "\e90c";
+}
+
+.axl-bootstrap:before {
+    content: "\e90d";
+}
+
+.axl-cc-amex:before {
+    content: "\e90e";
+}
+
+.axl-cc-diners-club:before {
+    content: "\e90f";
+}
+
+.axl-cc-mastercard:before {
+    content: "\e910";
+}
+
+.axl-cc-paypal:before {
+    content: "\e911";
+}
+
+.axl-cc-visa:before {
+    content: "\e912";
+}
+
+.axl-chrome:before {
+    content: "\e913";
+}
+
+.axl-chromecast:before {
+    content: "\e914";
+}
+
+.axl-codepen:before {
+    content: "\e915";
+}
+
+.axl-css3:before {
+    content: "\e916";
+}
+
+.axl-css3-alt:before {
+    content: "\e917";
+}
+
+.axl-dropbox:before {
+    content: "\e918";
+}
+
+.axl-drupal:before {
+    content: "\e919";
+}
+
+.axl-ebay:before {
+    content: "\e91a";
+}
+
+.axl-edge:before {
+    content: "\e91b";
+}
+
+.axl-facebook:before {
+    content: "\e91c";
+}
+
+.axl-facebook-f:before {
+    content: "\e91d";
+}
+
+.axl-facebook-messenger:before {
+    content: "\e91e";
+}
+
+.axl-facebook-square:before {
+    content: "\e91f";
+}
+
+.axl-fedex:before {
+    content: "\e920";
+}
+
+.axl-firefox:before {
+    content: "\e921";
+}
+
+.axl-flickr:before {
+    content: "\e922";
+}
+
+.axl-git:before {
+    content: "\e923";
+}
+
+.axl-git-alt:before {
+    content: "\e924";
+}
+
+.axl-github:before {
+    content: "\e925";
+}
+
+.axl-github-alt:before {
+    content: "\e926";
+}
+
+.axl-github-square:before {
+    content: "\e927";
+}
+
+.axl-git-square:before {
+    content: "\e928";
+}
+
+.axl-google:before {
+    content: "\e929";
+}
+
+.axl-google-drive:before {
+    content: "\e92a";
+}
+
+.axl-google-play:before {
+    content: "\e92b";
+}
+
+.axl-google-plus:before {
+    content: "\e92c";
+}
+
+.axl-html5:before {
+    content: "\e92d";
+}
+
+.axl-instagram:before {
+    content: "\e92e";
+}
+
+.axl-java:before {
+    content: "\e92f";
+}
+
+.axl-joomla:before {
+    content: "\e930";
+}
+
+.axl-js:before {
+    content: "\e931";
+}
+
+.axl-laravel:before {
+    content: "\e932";
+}
+
+.axl-linkedin:before {
+    content: "\e933";
+}
+
+.axl-linux:before {
+    content: "\e934";
+}
+
+.axl-microsoft:before {
+    content: "\e935";
+}
+
+.axl-node:before {
+    content: "\e936";
+}
+
+.axl-node-js:before {
+    content: "\e937";
+}
+
+.axl-paypal:before {
+    content: "\e938";
+}
+
+.axl-php:before {
+    content: "\e939";
+}
+
+.axl-pinterest:before {
+    content: "\e93a";
+}
+
+.axl-pinterest-p:before {
+    content: "\e93b";
+}
+
+.axl-pinterest-square:before {
+    content: "\e93c";
+}
+
+.axl-reddit:before {
+    content: "\e93d";
+}
+
+.axl-reddit-alien:before {
+    content: "\e93e";
+}
+
+.axl-reddit-square:before {
+    content: "\e93f";
+}
+
+.axl-sass:before {
+    content: "\e940";
+}
+
+.axl-skype:before {
+    content: "\e941";
+}
+
+.axl-snapchat:before {
+    content: "\e942";
+}
+
+.axl-snapchat-ghost:before {
+    content: "\e943";
+}
+
+.axl-snapchat-square:before {
+    content: "\e944";
+}
+
+.axl-tumblr:before {
+    content: "\e945";
+}
+
+.axl-tumblr-square:before {
+    content: "\e946";
+}
+
+.axl-twitter:before {
+    content: "\e947";
+}
+
+.axl-twitter-square:before {
+    content: "\e948";
+}
+
+.axl-vimeo:before {
+    content: "\e949";
+}
+
+.axl-vimeo-v:before {
+    content: "\e94a";
+}
+
+.axl-vuejs:before {
+    content: "\e94b";
+}
+
+.axl-whatsapp:before {
+    content: "\e94c";
+}
+
+.axl-whatsapp-square:before {
+    content: "\e94d";
+}
+
+.axl-windows:before {
+    content: "\e94e";
+}
+
+.axl-wordpress:before {
+    content: "\e94f";
+}
+
+.axl-wordpress-simple:before {
+    content: "\e950";
+}
+
+.axl-youtube:before {
+    content: "\e951";
+}
+
+.axl-youtube-square:before {
+    content: "\e952";
+}

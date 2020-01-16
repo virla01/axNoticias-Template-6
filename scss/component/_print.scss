@@ -1,0 +1,100 @@
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    a {
+        &:not(.btn) {
+            text-decoration: underline;
+        }
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid $border-color;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    @page {
+        size: a3;
+    }
+    body {
+        min-width: map-get($grid-breakpoints, "lg") !important;
+    }
+    .container {
+        min-width: map-get($grid-breakpoints, "lg") !important;
+    }
+
+    .navbar {
+        display: none;
+    }
+    .badge {
+        border: 1px solid $border-color;
+    }
+
+    .table {
+        border-collapse: collapse !important;
+
+        td,
+        th {
+        background-color: $white !important;
+        }
+    }
+
+    .table-bordered {
+        th,
+        td {
+        border: 1px solid $border-color !important;
+        }
+    }
+
+    .table-dark {
+        color: inherit;
+
+        th,
+        td,
+        thead th,
+        tbody + tbody {
+        border-color: $border-color;
+        }
+    }
+
+    .table .thead-dark th {
+        color: inherit;
+        border-color: $border-color;
+    }
+}
+
+  

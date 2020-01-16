@@ -1,0 +1,89 @@
+
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.list-group-item-action {
+    width: 100%;
+    color: $gray-01;
+    text-align: inherit;
+  
+    &:hover,
+    &:focus {
+        color: $gray-01;
+        text-decoration: none;
+        background-color: $gray-04;
+    }
+  
+    &:active {
+        color: $gray-01;
+        background-color: $primary;
+    }
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: $white;
+    border: 1px solid $border-color;
+  
+    &:first-child {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+    }
+  
+    &:last-child {
+        margin-bottom: 0;
+        border-bottom-right-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+    }
+  
+    &:hover,
+    &:focus {
+        z-index: 1;
+        text-decoration: none;
+    }
+  
+    &.disabled,
+    &:disabled {
+        color: $gray-03;
+        background-color: $disabled-bg;
+    }
+
+    &.active {
+        z-index: 2;
+        color: $white;
+        background-color: $component-active-bg;
+        border-color: $border-color;
+    }
+}
+
+.list-group-flush {
+    .list-group-item {
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+    }
+  
+    &:first-child {
+        .list-group-item:first-child {
+            border-top: 0;
+        }
+    }
+  
+    &:last-child {
+        .list-group-item:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+
+@each $color, $value in $theme-colors {
+    @include list-group-item-variant($color, theme-color-level($color, -9), theme-color-level($color, 6));
+}
+  

@@ -1,0 +1,505 @@
+@function color-yiq($color) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+
+    $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+    @if ($yiq >= $yiq-contrasted-threshold) {
+        @return $yiq-text-dark;
+    } @else {
+        @return $yiq-text-light;
+    }
+}
+
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+    $n: index($breakpoint-names, $name);
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+    $next: breakpoint-next($name, $breakpoints);
+    @return if($next, breakpoint-min($next, $breakpoints) - .02px, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+    @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    $max: breakpoint-max($name, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($name, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+    $num: $size / $columns;
+    margin-left: if($num == 0, 0, percentage($num));
+}
+
+@mixin make-grid-columns($columns: $grid-columns, $gutter: 30px, $breakpoints: $grid-breakpoints) {
+    %grid-column {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
+    }
+
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @for $i from 1 through $columns {
+            .col#{$infix}-#{$i} {
+                @extend %grid-column;
+            }
+        }
+        .col#{$infix},
+        .col#{$infix}-auto {
+            @extend %grid-column;
+        }
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            .col#{$infix} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+            .col#{$infix}-auto {
+                flex: 0 0 auto;
+                width: auto;
+                max-width: none;
+            }
+
+            @for $i from 1 through $columns {
+                .col#{$infix}-#{$i} {
+                    @include make-col($i, $columns);
+                }
+            }
+
+            .order#{$infix}-first {
+                order: -1;
+            }
+
+            @for $i from 1 through $columns {
+                .order#{$infix}-#{$i} {
+                    order: $i;
+                }
+            }
+
+            @for $i from 0 through ($columns - 1) {
+                @if not ($infix == "" and $i == 0) {
+                    .offset#{$infix}-#{$i} {
+                        @include make-col-offset($i, $columns);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint, $container-max-width in $max-widths {
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            max-width: $container-max-width;
+        }
+    }
+}
+
+@mixin bg-variant($parent, $color) {
+    #{$parent} {
+      background-color: $color !important;
+    }
+    a#{$parent},
+    button#{$parent} {
+        &:hover,
+        &:focus {
+            background-color: darken($color, 10%) !important;
+        }
+    }
+}
+
+@mixin bg-gradient-variant($parent, $color) {
+    #{$parent} {
+        background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x !important;
+    }
+}
+
+@mixin text-emphasis-variant($parent, $color) {
+    #{$parent} {
+        color: $color !important;
+    }
+    a#{$parent} {
+        &:hover,
+        &:focus {
+            color: darken($color, 10%) !important;
+        }
+    }
+}
+
+@function theme-color($key: "primary") {
+    @return map-get($theme-colors, $key);
+}
+
+@function theme-color-level($color-name: "primary", $level: 0) {
+    $color: theme-color($color-name);
+    $color-base: if($level > 0, $black, $white);
+    $level: abs($level);
+
+    @return mix($color-base, $color, $level * $theme-color-interval);
+}
+
+@mixin table-row-variant($state, $background) {
+    .tabla-#{$state} {
+        &,
+        > th,
+        > td {
+            background-color: $background;
+        }
+    }
+
+    .tabla-hover {
+      $hover-background: darken($background, 5%);
+
+      .tabla-#{$state} {
+            &:hover,
+            &:focus {
+                background-color: $hover-background;
+
+                > td,
+                > th {
+                    background-color: $hover-background;
+                }
+            }
+        }
+    }
+}
+
+@mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 20%), $active-background: darken($background, 15%), $active-border: darken($border, 22.5%)) {
+    color: color-yiq($background);
+    background-color: $background;
+    border-color: darken($border,7.5%);
+    &:hover{
+        color: $white;
+        background-color: $hover-background;
+        border-color: $hover-border;
+        text-decoration: none;
+    }
+    &:focus{
+        box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+    &:disabled {
+        background-color: $background;
+        border-color: darken($border,5%);
+    }
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: $white;
+      background-color: $active-background;
+      border-color: $active-border;
+
+    box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+}
+
+@mixin button-outline-variant($color, $color-hover: #fff) {
+    color: $color;
+    background-color: transparent;
+    background-image: none;
+    border-color: $color;
+
+    &:hover,
+    &.hover {
+      color: $color-hover;
+      background-color: $color;
+      border-color: $color;
+      text-decoration: none;
+    }
+
+    &:focus,
+    &.focus {
+      box-shadow: 0 0 0 .2rem rgba($color, .5);
+    }
+
+    &.disabled,
+    &:disabled {
+      color: $color;
+      background-color: transparent;
+    }
+
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: $color-hover;
+      background-color: $color;
+      border-color: $color;
+      box-shadow: 0 0 0 .2rem rgba($color, .5);
+    }
+}
+
+@mixin button-round-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+    color: $white;
+    background-color: $background;
+    border-color: $border;
+    border-radius: $border-radius-pill;
+    &:hover{
+        color: $white;
+        background-color: $hover-background;
+        border-color: $hover-border;
+        text-decoration: none;
+    }
+    &:focus{
+        box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+    &:disabled {
+        background-color: $background;
+        border-color: $border;
+    }
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: $white;
+      background-color: $active-background;
+      border-color: $active-border;
+
+    box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+}
+
+@mixin button-flag-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+    color: $white;
+    background-color: $background;
+    border-color: $border;
+    border-radius: 20% $border-radius;
+    &:hover{
+        color: $white;
+        background-color: $hover-background;
+        border-color: $hover-border;
+        text-decoration: none;
+    }
+    &:focus{
+        box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+    &:disabled {
+        background-color: $background;
+        border-color: $border;
+    }
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: $white;
+      background-color: $active-background;
+      border-color: $active-border;
+
+    box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+}
+
+@mixin button-especial-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+    color: $white;
+    background: linear-gradient(to bottom,
+                rgba(255,255,255,0.8) 0%,
+                rgba(255,255,255,.2) 49%,
+                rgba(0,0,0,0.2)50%,
+                rgba(0,0,0,0.5) 100%);
+    background-color: rgba($background,1);
+    box-shadow: inset 0px 0px 2px 2px rgba(255,255,255,.8),
+                0px 0px 4px 3px rgba(0,0,0,.5);
+
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active{
+        background: linear-gradient(to bottom,
+                    rgba(0,0,0,0.5) 0%,
+                    rgba(0,0,0,0.2) 49%,
+                    rgba(255,255,255,0.2)50%,
+                    rgba(255,255,255,0.8) 100%);
+        background-color: rgba($background,1);
+        box-shadow: inset 0px 0px 2px 2px rgba(255,255,255,.8),
+                    0px 0px 4px 3px rgba(0,0,0,.5);
+    }
+}
+
+@mixin button-transparent-variant($background, $border, $hover-background: lighten($background, 30.5%), $hover-border: lighten($border, 20%), $active-background: lighten($background, 15%), $active-border: lighten($border, 22.5%)) {
+    color: $black;
+    &:hover{
+        color: $white;
+        background-color: $hover-background;
+        border-color: $hover-border;
+    }
+    &:focus{
+        box-shadow: 0 0 0 .2rem rgba($border, .5);
+    }
+    &:disabled {
+        background-color: $background;
+        border-color: darken($border,5%);
+    }
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: $white;
+      background-color: $active-background;
+      border-color: $active-border;
+    }
+}
+
+@mixin transition($transition...) {
+    @if length($transition) == 0 {
+        transition: $transition-base;
+    } @else {
+        transition: $transition;
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+@mixin badge-variant($bg) {
+    color: color-yiq($bg);
+    background-color: $bg;
+
+    &[href] {
+        &:hover,
+        &:focus {
+            color: color-yiq($bg);
+            text-decoration: none;
+            background-color: darken($bg, 10%);
+        }
+    }
+}
+
+@mixin pagination-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+    .page-link {
+        padding: $padding-y $padding-x;
+        font-size: $font-size;
+        line-height: $line-height;
+    }
+
+    .page-item {
+        &:first-child {
+            .page-link {
+                border-top-left-radius: $border-radius;
+                border-bottom-left-radius: $border-radius;
+            }
+        }
+        &:last-child {
+            .page-link {
+                border-top-right-radius: $border-radius;
+                border-bottom-right-radius: $border-radius;
+            }
+        }
+    }
+}
+
+@mixin alert-variant($background, $border, $color) {
+    color: $color;
+    border-color: $border;
+    background-color: $background;
+    hr {
+      border-top-color: darken($border, 5%);
+    }
+
+    .alert-link {
+      color: darken($color, 10%);
+    }
+}
+
+@mixin gradient-striped($color: rgba($white, .15), $angle: 45deg) {
+    background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+}
+
+@mixin list-group-item-variant($state, $background, $color) {
+    .list-group-item-#{$state} {
+        color: $color;
+        background-color: $background;
+
+        &.list-group-item-action {
+            &:hover,
+            &:focus {
+            color: $color;
+            background-color: darken($background, 5%);
+            }
+
+            &.active {
+            color: $white;
+            background-color: $color;
+            border-color: $color;
+            }
+        }
+    }
+}

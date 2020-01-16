@@ -1,0 +1,851 @@
+/*------------------------------------------
+**             08/01/2020
+**        Realizado por: AspectoX
+**        http://aspectox.esy.es/
+**      aspectox.creativa@gmail.com
+**------------------------------------------*/
+
+
+/* -----------------------
+* ADICIONES
+-------------------------- */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding: 1.25rem 0;
+    background: url(./../images/fondo.jpg) no-repeat center bottom;
+    background-color: #386398;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.no-gutters>.col,
+.no-gutters>[class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+/*.container:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    z-index: 1;
+    background: #fff;
+}
+
+.container:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    z-index: 1;
+    background: #fff;
+}*/
+
+.col-xl,
+.col-xl-auto,
+.col-xl-12,
+.col-xl-11,
+.col-xl-10,
+.col-xl-9,
+.col-xl-8,
+.col-xl-7,
+.col-xl-6,
+.col-xl-5,
+.col-xl-4,
+.col-xl-3,
+.col-xl-2,
+.col-xl-1,
+.col-lg,
+.col-lg-auto,
+.col-lg-12,
+.col-lg-11,
+.col-lg-10,
+.col-lg-9,
+.col-lg-8,
+.col-lg-7,
+.col-lg-6,
+.col-lg-5,
+.col-lg-4,
+.col-lg-3,
+.col-lg-2,
+.col-lg-1,
+.col-md,
+.col-md-auto,
+.col-md-12,
+.col-md-11,
+.col-md-10,
+.col-md-9,
+.col-md-8,
+.col-md-7,
+.col-md-6,
+.col-md-5,
+.col-md-4,
+.col-md-3,
+.col-md-2,
+.col-md-1,
+.col-sm,
+.col-sm-auto,
+.col-sm-12,
+.col-sm-11,
+.col-sm-10,
+.col-sm-9,
+.col-sm-8,
+.col-sm-7,
+.col-sm-6,
+.col-sm-5,
+.col-sm-4,
+.col-sm-3,
+.col-sm-2,
+.col-sm-1,
+.col,
+.col-auto,
+.col-12,
+.col-11,
+.col-10,
+.col-9,
+.col-8,
+.col-7,
+.col-6,
+.col-5,
+.col-4,
+.col-3,
+.col-2,
+.col-1 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.m-b-20 {
+    margin-bottom: 1.25rem !important;
+}
+
+.m-t-20 {
+    margin-top: 1.25rem !important;
+}
+
+hr.hr1 {
+    border-top: 1px solid rgba(42, 42, 42, 0.2);
+}
+
+hr.hr2 {
+    width: 100%;
+    border-top: 2px solid rgba(42, 42, 42, 0.2);
+}
+
+.dobleLine {
+    border-top: 2px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    height: 4px;
+}
+
+a.facebook {
+    color: #0561AF;
+}
+
+a.twitter {
+    color: #00BFF3;
+}
+
+a.youtube {
+    color: #CC181E;
+}
+
+a.linkedin {
+    color: #0077B5;
+}
+
+a.pinterest {
+    color: #BD081C;
+    ;
+}
+
+a.instagram {
+    color: #CD486B;
+}
+
+a.whatsapp {
+    color: #65D64A;
+}
+
+.linea-bottom {
+    border-bottom: 1px solid rgba(42, 42, 42, 0.2);
+    margin-bottom: 1.25rem;
+}
+
+
+/* Boton menu
+  --------------------- */
+
+.hamburger {
+    display: none;
+    width: 24px;
+    cursor: pointer;
+    color: inherit;
+    padding: 5px 0;
+    background: none;
+    border: 0;
+    outline: 0 !important;
+    border-radius: 0;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    z-index: 10000;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+}
+
+.hamburger span+span {
+    margin-top: 6px;
+}
+
+
+/* -----------------------
+* GENERAL
+-------------------------- */
+
+.general {
+    background-color: #fff;
+    border: 1px solid rgba(42, 42, 42, 0.2);
+    -webkit-box-shadow: 2px 2px 15px 0px rgba(42, 42, 42, 0.5);
+    -moz-box-shadow: 2px 2px 15px 0px rgba(42, 42, 42, 0.5);
+    box-shadow: 2px 2px 15px 0px rgba(42, 42, 42, 0.5);
+}
+
+
+/* -----------------------
+* HEADER
+-------------------------- */
+
+.header {
+    width: 100%;
+}
+
+
+/*
+  Logo
+*/
+
+.headerLogo-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.headerTop-fecha {
+    font-size: 80%;
+    left: 1.25rem;
+    bottom: 15px;
+    position: absolute;
+}
+
+.headerTop-imgLogo {
+    text-align: center;
+    padding-bottom: 12px!important;
+}
+
+.headerTop-imgLogo img {
+    height: 51px;
+}
+
+.tagline {
+    display: block;
+    width: 100%;
+    font-size: 90%;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0.2rem auto 0px;
+}
+
+.header-top-social_list {
+    list-style: none;
+    display: flex;
+    flex-direction: row !important;
+    margin: 0;
+    padding: 0;
+}
+
+.headerTop-IconSociales {
+    font-size: 80%;
+    right: 1.25rem;
+    bottom: 5px;
+    position: absolute;
+}
+
+.header-top-social_item {
+    font-size: 90%;
+}
+
+.header-top-social_item:after {
+    content: "|";
+}
+
+.header-top-social_item:last-of-type:after,
+.menu>li:last-of-type:after {
+    content: "";
+}
+
+.header-top-social_item>a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+.header-top-social_item>a:hover {
+    color: rgba(42, 42, 42, 0.5);
+}
+
+
+/* Navbar Top
+  --------------------- */
+
+.headerNavbar-top {
+    width: 100%;
+    position: relative;
+    border-top: 1px solid rgba(42, 42, 42, 0.2);
+    border-bottom: 2px solid rgba(42, 42, 42, 0.2);
+}
+
+.topnav {
+    width: 100%;
+    position: sticky;
+    background: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.navmenu {
+    padding: 0;
+    overflow: hidden;
+    height: 34px;
+}
+
+.menu {
+    height: 45px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.menu>li {
+    display: inline-block;
+    position: relative;
+    font-size: 75%;
+    text-transform: uppercase;
+}
+
+.menu>li::after {
+    content: "|";
+}
+
+.menu>li>a {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+}
+
+
+/* -----------------------
+* MAIN
+-------------------------- */
+
+.main {
+    width: 100%;
+    padding-top: 1.25rem;
+    /*border: 1px solid cadetblue;*/
+}
+
+
+/*.item {
+    border: 1px solid cadetblue;
+}*/
+
+.mainTop-article {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.item {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border-right: 1px dashed rgba(45, 45, 45, 0.3);
+}
+
+.item:last-of-type {
+    border-right: none;
+}
+
+.item .img {
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 0;
+}
+
+.item img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+
+.item .col {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+}
+
+.item h3.title {
+    font-size: 0.75rem;
+}
+
+.item .col-3 {
+    padding-left: 15px;
+    padding-right: 0;
+}
+
+
+/*.Col-middle-2,
+.Col-middle,*/
+
+.Col-right {
+    border-left: 1px solid rgba(42, 42, 42, 0.2);
+}
+
+.Col-right .post-item {
+    border-left: none;
+}
+
+
+/*
+   TITULOS EN UNA COLUMNA
+*/
+
+.Col-left>.row>.linea-bottom {
+    margin: 0 1.25rem;
+}
+
+.titleSeccion-col-1 {
+    display: block;
+    width: auto;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #CB4854;
+    padding-bottom: 1.25rem;
+}
+
+h6.title-col-1 {
+    font-size: 0.75rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(42, 42, 42, 0.2);
+}
+
+h6.title-col-1:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+
+/*
+Articulo principal
+*/
+
+article.post-item {
+    padding: 0 1.25rem;
+    margin-bottom: 1.25rem;
+    border-left: 1px solid rgba(42, 42, 42, 0.2);
+}
+
+.post-item img {
+    margin-bottom: 0.625rem;
+}
+
+.post-item h1.title {
+    font-size: 2.1875rem;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    letter-spacing: -.07rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post-item p {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 21px;
+    margin-bottom: 0;
+}
+
+.post-item h3.title {
+    font-size: 1.625rem;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    letter-spacing: -.07rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post-item h4.title {
+    font-size: 1.25rem;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    letter-spacing: -.02rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post-item h5.title {
+    font-size: 1rem;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    letter-spacing: -.02rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+
+/* -----------------------
+* FOOTER
+-------------------------- */
+
+.footer {
+    display: flex;
+    width: 100%;
+    padding: 1.25rem;
+    border-top: 1px solid rgba(42, 42, 42, 0.2);
+}
+
+.footer1,
+.footer2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1.25rem;
+}
+
+.footer2 {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.footer2>a.logo,
+.footer2>p {
+    display: block;
+    width: 100%;
+}
+
+.footer2>p {
+    font-size: 0.75rem;
+    margin-top: 0.625rem;
+}
+
+.footer3 {}
+
+.footer4 {}
+
+.footer-social-lista {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: row !important;
+}
+
+.footer-social-item a {
+    padding: 0.3125rem 0.9375rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+footer h5 {
+    margin-bottom: 2rem;
+}
+
+footer p,
+footer p a {
+    font-size: 0.875rem;
+    font-weight: 300;
+    margin-bottom: .5rem;
+}
+
+.footerMenu a {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+    margin-right: .5rem;
+}
+
+span>a:hover {
+    color: #CB4854;
+    text-decoration: none;
+}
+
+
+/* -----------------------
+* COMPLEMENTOS
+-------------------------- */
+
+
+/* Banners
+  --------------------- */
+
+.headerBanner-top,
+.banner-h {
+    width: 100%;
+    color: #A3A3A3;
+    border-top: 1px solid rgba(42, 42, 42, 0.2);
+    border-bottom: 1px solid rgba(42, 42, 42, 0.2);
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    text-align: center;
+}
+
+.headerBanner-top {
+    margin-top: 0;
+    border-top: none;
+}
+
+.titleBanner {
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1.25rem;
+}
+
+p.textBanner {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.banner-main-03-v {
+    width: 100%;
+    color: #A3A3A3;
+    text-align: center;
+    padding: 0 1.25rem;
+    margin: 0 1.25rem 1.25rem 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.linea-separador-gray {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+
+/* -----------------------
+* WIDGET
+-------------------------- */
+
+.weather-widget {
+    background: #08f;
+    color: #fff;
+    border-width: 0;
+    padding: 0.625rem;
+    margin: 0 auto;
+}
+
+.widget-title {
+    font-size: 1.0625rem;
+    color: #ffffff;
+}
+
+.weather-wrap {
+    clear: both;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px 0 20px;
+    line-height: 1;
+}
+
+.weather-icon-and-city {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.weather-icon {
+    font-family: 'tiefonticon';
+    position: relative;
+    margin: 0 auto 0.1em;
+    font-size: 75px;
+    width: 1em;
+    height: 0.9em;
+}
+
+.weather-name {
+    font-size: 32px;
+    padding-top: 5px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.weather-desc {
+    margin-top: 5px;
+    text-transform: capitalize;
+}
+
+.weather-todays-stats {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.weather-current-temp {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.weather-current-temp sup {
+    font-size: 17px;
+    vertical-align: super;
+    font-weight: normal;
+}
+
+.weather-more-todays-stats {
+    text-align: left;
+    line-height: 1.6;
+    font-size: 90%;
+}
+
+.weather-forecast {
+    clear: both;
+    padding-top: 0.625rem;
+    overflow: hidden;
+}
+
+.weather-forecast-day {
+    position: relative;
+    width: 1%;
+    display: table-cell;
+    text-align: center;
+}
+
+.weather-forecast-day .weather-icon {
+    font-size: 35px;
+}
+
+.weather-forecast-day-temp {
+    font-size: 14px;
+}
+
+.weather-forecast-day-abbr {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+.mercado {
+    width: 100%;
+    margin: 0 1.25rem;
+}
+
+.mercado h6 {
+    margin: 1.25rem 0 0 1.25rem;
+    font-weight: 700;
+    color: #cc3300;
+}
+
+
+/* -----------------------
+* MEDIA
+-------------------------- */
+
+
+/* sm */
+
+@media only screen and (min-width: 610px) {
+    .headerTop-imgLogo {
+        padding-bottom: 2.5rem !important;
+    }
+    .mainTop-article .item {
+        margin-bottom: 1.25rem;
+    }
+    .mainTop-article .item .row .col-sm-12 {
+        padding-right: 1.25rem!important;
+        padding-bottom: 0.625rem;
+    }
+}
+
+
+/* md */
+
+@media only screen and (min-width: 816px) {
+    .headerTop-imgLogo {
+        padding-bottom: 1.5625rem;
+    }
+    .mainTop-article .item .row .col-sm-12 {
+        padding-right: 0!important;
+        padding-bottom: 0!important;
+    }
+}
+
+
+/* lg */
+
+@media only screen and (min-width: 1024px) {
+    .headerTop-imgLogo {
+        padding-bottom: 12px!important;
+    }
+    .mainTop-article .item {
+        margin-bottom: 0!important;
+    }
+}
+
+
+/* xl */
+
+@media only screen and (min-width: 1260px) {}
